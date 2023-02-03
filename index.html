@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/index.js" defer></script>
+    <title>Brandon Wu's Portfolio</title>
+  </head>
+  <body class="font-nunito h-screen bg-white">
+    <!-- navbar -->
+    <nav class="w-full fixed top-0 bg-white z-10 dark:bg-slate-900">
+      <div
+        class="container mx-auto px-5 py-5 lg:p-10 max-w-6xl flex items-center justify-between"
+      >
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold text-slate-800 dark:text-white"
+            >BrandonWu500</span
+          >
+        </div>
+        <ul
+          class="hidden md:flex space-x-10 text-gray-600 dark:text-gray-200 font-bold text-sm uppercase"
+        >
+          <li class="hover:text-gray-400">
+            <a href="#">homepage</a>
+          </li>
+          <li class="hover:text-gray-400">
+            <a href="#about">about me</a>
+          </li>
+          <li class="hover:text-gray-400">
+            <a href="#projects">projects</a>
+          </li>
+          <li class="hover:text-gray-400">
+            <a href="#contact">contact</a>
+          </li>
+        </ul>
+        <button
+          id="moon"
+          class="hidden lg:flex items-center gap-4 cursor-pointer"
+        >
+          <i class="fa-solid fa-moon dark:text-gray-200 dark:hidden"></i>
+          <i class="fa-solid fa-sun dark:text-gray-200 hidden dark:block"></i>
+          <span class="dark:text-gray-200 dark:hidden">DARK MODE</span>
+          <span class="dark:text-gray-200 hidden dark:block">LIGHT MODE</span>
+        </button>
+        <div id="hamburger" class="space-y-1 md:hidden cursor-pointer z-20">
+          <div class="w-8 h-1 bg-black dark:bg-white"></div>
+          <div class="w-8 h-1 bg-black dark:bg-white"></div>
+          <div class="w-8 h-1 bg-black dark:bg-white"></div>
+        </div>
+        <ul
+          id="menu"
+          class="-translate-y-full transition-transform duration-500 absolute left-0 top-0 w-full p-10 rounded-b-3xl uppercase space-y-10 bg-white dark:bg-slate-900 dark:text-gray-200 text-center"
+        >
+          <li>
+            <a class="hLink" href="#">homepage</a>
+          </li>
+          <li>
+            <a class="hLink" href="#about">about me</a>
+          </li>
+          <li>
+            <a class="hLink" href="#projects">projects</a>
+          </li>
+          <li>
+            <a class="hLink" href="#contact">contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- hero -->
+    <section
+      class="sm:mt-16 lg:mt-28 h-1/2 lg:h-screen bg-gradient-to-t from-slate-400 dark:from-slate-800 dark:to-slate-900 dark:text-gray-200 flex items-center justify-around w-full"
+    >
+      <img
+        src="./images/Portrait.jpg"
+        alt="Portrait of Brandon Wu"
+        class="h-1/3 sm:h-2/3 object-contain"
+      />
+      <div>
+        <p class="text-sm sm:text-lg md:text-3xl xl:text-5xl font-medium">
+          Hi! I'm
+        </p>
+        <h1 class="my-2 text-xl sm:text-4xl md:text-6xl xl:text-7xl font-bold">
+          Brandon Wu
+        </h1>
+        <p
+          id="text"
+          class="text-base sm:text-xl md:text-4xl xl:text-6xl font-semibold capitalize"
+        >
+          Front-end web developer
+        </p>
+      </div>
+    </section>
+
+    <!-- about me section -->
+    <section id="about" class="px-10 dark:bg-slate-900 dark:text-gray-300">
+      <div
+        class="container mx-auto py-40 flex flex-col gap-4 max-w-xl leading-8 h-screen"
+      >
+        <h2 class="text-center uppercase font-bold text-xl">About Me</h2>
+        <p>
+          I recently graduated from the University of Michigan with a Bachelor
+          of Science Degree in Computer Science. I have been interested in web
+          development for over a year now, specifically the front-end. I have
+          been learning through a combination of college courses and
+          self-learning by reading Mozilla guides and documentation, along with
+          watching YouTube tutorials.
+        </p>
+        <p>
+          I am comfortable with HTML, CSS, and Javascript. I also have
+          experience with ReactJS and the MERN Stack. I am currently trying to
+          gain more experience with the MERN Stack by building more projects. I
+          am also trying to learn Tailwind CSS to become more familiar with CSS
+          frameworks.
+        </p>
+        <p class="font-semibold">
+          Currently, I am looking for a job as a front-end developer or React
+          developer.
+        </p>
+      </div>
+    </section>
+
+    <!-- projects section -->
+    <section id="projects" class="dark:bg-slate-900 dark:text-gray-300">
+      <div class="max-w-xl container mx-auto px-10 py-40">
+        <h2 class="text-center font-bold text-xl mb-4">PROJECTS</h2>
+        <ul class="h-screen">
+          <li>
+            <a href="#mern-shop" class="font-semibold text-lg"
+              >1. MERN Shopping App</a
+            >
+          </li>
+        </ul>
+
+        <!-- MERN Shop Project -->
+        <div class="mx-auto flex flex-col gap-4 py-40 leading-8" id="mern-shop">
+          <h3 class="font-bold text-lg">MERN Shopping App</h3>
+          <div class="flex flex-col gap-1">
+            <h4 class="font-semibold text-md">Github Repo Link:</h4>
+            <a href="https://github.com/BrandonWu500/ecommerce-mern-app"
+              >https://github.com/BrandonWu500/ecommerce-mern-app</a
+            >
+          </div>
+
+          <p>Below is a video walkthrough of the app's functionality:</p>
+          <iframe
+            height="315"
+            src="https://www.youtube-nocookie.com/embed/pbEavbJXqs8"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            class="w-full"
+          ></iframe>
+          <h4 class="font-semibold text-md mt-8">Case Study:</h4>
+          <p>
+            Before attempting this project, I had already done a few projects
+            with React and a group project with the MERN Stack. However, I
+            hadn't really done a big project by myself with the MERN Stack. I
+            decided on the idea of a shopping website because it was something I
+            had used myself before, and I could reference those websites that I
+            had used when building the project (like Amazon for example). A
+            shopping website also has a variety of different features that could
+            help me practice my skills with React, specifically with managing
+            state changes in multiple places (by using Redux Toolkit). It would
+            also provide me an opportunity to utilize multiple models in
+            MongoDB, but be common enough that there would be documentation or
+            examples out there to guide me if I got stuck on the logic of a
+            controller.
+          </p>
+          <p>
+            In terms of actually building the project, I started off by building
+            a mobile-responsive frontend using React, Redux Toolkit and
+            styled-components. I already had experience with all of these
+            technologies, and I thought the familiarity I had would make it
+            easier as a starting point. It would also give me insight as to what
+            models and controllers that I would need in the backend.
+          </p>
+          <p>
+            One of the big problems I ran into when building the frontend was
+            figuring out how I was going to handle different requests based on
+            whether they were a logged-in user or a guest user. I thought it was
+            important to handle this distinction because most shopping websites
+            don't require you to make an account to make an order. However, this
+            was my first time handling this type of distinction in a project, so
+            it took me a bit of trial and error.
+          </p>
+          <p>
+            At first, I tried using the same functions in Redux Toolkit and just
+            changing the logic based on whether they were a user or a guest. I
+            thought I would have to do this because I needed to save the cart
+            regardless of whether they were signed in or not. However, after
+            trying it out, I realized that it was impractical to save a guest's
+            cart in the database because they wouldn't have a user id. Next, I
+            thought about just having a guest user id in the database, but I
+            realized that this solution could potentially run into problems if I
+            ended up allowing users to save multiple carts (like a wishlist cart
+            for example). Finally, I decided to use localStorage to save the
+            guest's cart. This way the guest's cart could be saved to the
+            browser, and I made it so if they logged in as a user it would clear
+            the localStorage cart. Also, since I ended up using localStorage as
+            opposed to the database, I had to use a different set of reducers in
+            the redux because I no longer needed to make axios requests to the
+            database for a guest. For the logged-in user requests to the
+            database, I used the extraReducers feature in Redux Toolkit, which
+            let me specifically target the pending, fulfilled, and rejected
+            states resulting from the promises returned by the axios requests.
+          </p>
+          <p>
+            This was how I ended up setting up my reducers in redux toolkit to
+            handle changes to the guest cart:
+          </p>
+          <img
+            src="/images/screenshots/mern-shop-guest-redux.png"
+            alt=""
+            class="mb-8"
+          />
+          <p>
+            This was how I ended up using the extraReducers in redux toolkit to
+            handle the changes to the user's cart:
+          </p>
+          <img
+            src="/images/screenshots/mern-shop-user-redux.png"
+            alt=""
+            class="mb-8"
+          />
+          <p>
+            This was how I ended up setting up my functions to make requests to
+            the backend api with redux toolkit:
+          </p>
+          <img
+            src="/images/screenshots/mern-shop-cart-service.png"
+            alt=""
+            class="mb-8"
+          />
+          <p>
+            After building the frontend, I determined that I would need four
+            different models in the backend: users, carts, orders, and products.
+            Each of those models would have their respective routes and
+            controllers. However, additionally I needed routes and controller
+            logic to handle the checkout process. I used Stripe to help with the
+            payments because it was a popular choice and seemed straightforward
+            to use.
+          </p>
+          <p>
+            I had helped build a backend in the past using MongoDB, Express, and
+            NodeJS. However, this was my first time building a backend, with
+            multiple models, on my own using these technologies. I started off
+            just setting up the routes and models with basic controller logic
+            just to see if everything was working. I used Postman to test my api
+            endpoints along the way.
+          </p>
+          <p>
+            One of the biggest challenges I ran into when building the backend
+            was setting up the models properly with the right properties. This
+            was especially apparent in the products schema. At first, I thought
+            I could set the color and size properties to an array of strings,
+            similar to the categories property. This worked fine when rendering
+            the different options on the product info page. However, as I was
+            testing the add to cart process, I realized that products with the
+            same title and different colors or sizes were being treated as the
+            same product in the cart. This meant that the user couldn't view or
+            update their choices separately based on the different color or size
+            of the product. Another problem was the image being rendered was
+            always the same, regardless of the color. To remedy this, I decided
+            to change the color and size properties in the schema to be an array
+            of objects instead and give a separate product id to each color and
+            size.
+          </p>
+          <img
+            src="/images/screenshots/product-schema.png"
+            alt=""
+            class="object-contain h-96"
+          />
+          <p>
+            This did end up working out where the different colors and sizes
+            were being rendered separately in the cart, which allowed the user
+            to update the items without affecting others with the same title.
+            However, after completing the project and analyzing the code, I
+            realized that it would have been a lot simpler to save the color and
+            size properties as strings. Then, have a separate product id for
+            each color and size. Finally, when rendering the product info, doing
+            a lookup in the database based on the title of the product rather
+            than the id.
+          </p>
+          <img src="/images/screenshots/product-controller.png" alt="" />
+          <p>
+            Overall, it was fun building this project and I learned a lot! I had
+            been learning a few of the technologies I used in this project
+            separately, but building this project gave me more experience
+            putting them all together. I am still definitely more comfortable
+            with the frontend, but I do feel more familiar with the backend now.
+            As I was building the backend, it also gave me more ideas to add to
+            the frontend, along with improving the existing features.
+          </p>
+          <p>
+            After building this project, the next idea I have is to build an
+            admin dashboard using the MERN Stack to make it easier and more
+            efficient to handle the backend for the shopping app. The admin
+            dashboard could also be used in future projects besides just the
+            shopping app.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact section -->
+    <section id="contact" class="dark:bg-slate-900 dark:text-gray-200">
+      <div class="max-w-xl container mx-auto px-10 py-40 h-screen">
+        <h2 class="text-center font-bold text-xl mb-4">CONTACT INFO</h2>
+        <p class="text-center semi-bold text-xl mb-4">
+          Email: brandonwu500@gmail.com
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
