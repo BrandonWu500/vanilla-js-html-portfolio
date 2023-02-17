@@ -599,16 +599,16 @@ video {
   display: none;
 }
 
-.h-screen {
-  height: 100vh;
+.h-full {
+  height: 100%;
 }
 
 .h-1 {
   height: 0.25rem;
 }
 
-.h-1\/2 {
-  height: 50%;
+.h-screen {
+  height: 100vh;
 }
 
 .h-32 {
@@ -670,6 +670,10 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-10 {
+  gap: 2.5rem;
 }
 
 .gap-1 {
@@ -784,9 +788,9 @@ video {
   line-height: 1.75rem;
 }
 
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-lg {
@@ -898,25 +902,6 @@ video {
   .sm\:w-48 {
     width: 12rem;
   }
-
-  .sm\:gap-11 {
-    gap: 2.75rem;
-  }
-
-  .sm\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
-  .sm\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-
-  .sm\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
 }
 
 @media (min-width: 768px) {
@@ -953,10 +938,6 @@ video {
     display: flex;
   }
 
-  .lg\:h-screen {
-    height: 100vh;
-  }
-
   .lg\:h-96 {
     height: 24rem;
   }
@@ -965,8 +946,16 @@ video {
     width: 24rem;
   }
 
+  .lg\:flex-row {
+    flex-direction: row;
+  }
+
   .lg\:p-10 {
     padding: 2.5rem;
+  }
+
+  .lg\:text-left {
+    text-align: left;
   }
 }
 
