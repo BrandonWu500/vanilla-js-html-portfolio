@@ -587,6 +587,14 @@ video {
   margin-bottom: 2rem;
 }
 
+.mt-40 {
+  margin-top: 10rem;
+}
+
+.mb-80 {
+  margin-bottom: 20rem;
+}
+
 .flex {
   display: flex;
 }
@@ -668,20 +676,8 @@ video {
   gap: 1rem;
 }
 
-.gap-5 {
-  gap: 1.25rem;
-}
-
 .gap-1 {
   gap: 0.25rem;
-}
-
-.gap-10 {
-  gap: 2.5rem;
-}
-
-.gap-11 {
-  gap: 2.75rem;
 }
 
 .space-x-10 > :not([hidden]) ~ :not([hidden]) {
@@ -760,9 +756,22 @@ video {
   padding-right: 2.5rem;
 }
 
+.py-80 {
+  padding-top: 20rem;
+  padding-bottom: 20rem;
+}
+
 .py-40 {
   padding-top: 10rem;
   padding-bottom: 10rem;
+}
+
+.pb-80 {
+  padding-bottom: 20rem;
+}
+
+.pt-40 {
+  padding-top: 10rem;
 }
 
 .text-center {
@@ -967,10 +976,6 @@ video {
 
   .lg\:w-96 {
     width: 24rem;
-  }
-
-  .lg\:gap-11 {
-    gap: 2.75rem;
   }
 
   .lg\:p-10 {
