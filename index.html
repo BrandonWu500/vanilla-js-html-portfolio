@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+
     <!-- font awesome cdn -->
     <link
       rel="stylesheet"
@@ -109,9 +110,11 @@
       <!-- about me section -->
       <section id="about" class="px-10 dark:bg-slate-900 dark:text-gray-300">
         <div
-          class="container mx-auto pt-40 mb-96 h-full overflow-y-auto flex flex-col gap-4 max-w-xl leading-8"
+          class="container mx-auto pt-40 mb-96 h-full overflow-y-auto flex flex-col gap-4 max-w-xl leading-8 font-arial"
         >
-          <h2 class="text-center uppercase font-bold text-xl">About Me</h2>
+          <h2 class="text-center uppercase font-bold text-xl font-nunito">
+            About Me
+          </h2>
           <p>
             I recently graduated from the University of Michigan with a Bachelor
             of Science Degree in Computer Science. I have been interested in web
@@ -153,18 +156,30 @@
       <section id="projects" class="dark:bg-slate-900 dark:text-gray-300">
         <div class="max-w-xl container mx-auto px-10 py-40">
           <h2 class="text-center font-bold text-xl mb-4">PROJECTS</h2>
-          <ul class="h-screen space-y-5">
+          <ol class="h-screen space-y-5 list-decimal">
             <li>
-              <a href="#mern-shop" class="font-semibold text-lg"
-                >1. MERN Shopping App</a
-              >
+              <a href="#mern-shop" class="font-semibold text-lg">
+                MERN Shopping App
+              </a>
             </li>
             <li>
-              <a href="#admin-dash-front" class="font-semibold text-lg"
-                >2. Admin Dashboard Frontend</a
-              >
+              <a href="#admin-dash-front" class="font-semibold text-lg">
+                Admin Dashboard
+              </a>
+              <ol class="list-disc pl-5 space-y-2 mt-2">
+                <li>
+                  <a href="#admin-dash-front" class="font-semibold text-lg"
+                    >Frontend only</a
+                  >
+                </li>
+                <li>
+                  <a href="#admin-dash-firebase" class="font-semibold text-lg"
+                    >Frontend with Firebase</a
+                  >
+                </li>
+              </ol>
             </li>
-          </ul>
+          </ol>
 
           <!-- MERN Shop Section -->
           <section
@@ -189,158 +204,167 @@
               allowfullscreen
               class="w-full"
             ></iframe>
-            <h4 class="font-semibold text-md mt-8">Case Study:</h4>
-            <p>
-              Before attempting this project, I had already done a few projects
-              with React and a group project with the MERN Stack. However, I
-              hadn't really done a big project by myself with the MERN Stack. I
-              decided on the idea of a shopping website because it was something
-              I had used myself before, and I could reference those websites
-              that I had used when building the project (like Amazon for
-              example). A shopping website also has a variety of different
-              features that could help me practice my skills with React,
-              specifically with managing state changes in multiple places (by
-              using Redux Toolkit). It would also provide me an opportunity to
-              utilize multiple models in MongoDB, but be common enough that
-              there would be documentation or examples out there to guide me if
-              I got stuck on the logic of a controller.
-            </p>
-            <p>
-              In terms of actually building the project, I started off by
-              building a mobile-responsive frontend using React, Redux Toolkit
-              and styled-components. I already had experience with all of these
-              technologies, and I thought the familiarity I had would make it
-              easier as a starting point. It would also give me insight as to
-              what models and controllers that I would need in the backend.
-            </p>
-            <p>
-              One of the big problems I ran into when building the frontend was
-              figuring out how I was going to handle different requests based on
-              whether they were a logged-in user or a guest user. I thought it
-              was important to handle this distinction because most shopping
-              websites don't require you to make an account to make an order.
-              However, this was my first time handling this type of distinction
-              in a project, so it took me a bit of trial and error.
-            </p>
-            <p>
-              At first, I tried using the same functions in Redux Toolkit and
-              just changing the logic based on whether they were a user or a
-              guest. I thought I would have to do this because I needed to save
-              the cart regardless of whether they were signed in or not.
-              However, after trying it out, I realized that it was impractical
-              to save a guest's cart in the database because they wouldn't have
-              a user id. Next, I thought about just having a guest user id in
-              the database, but I realized that this solution could potentially
-              run into problems if I ended up allowing users to save multiple
-              carts (like a wishlist cart for example). Finally, I decided to
-              use localStorage to save the guest's cart. This way the guest's
-              cart could be saved to the browser, and I made it so if they
-              logged in as a user it would clear the localStorage cart. Also,
-              since I ended up using localStorage as opposed to the database, I
-              had to use a different set of reducers in the redux because I no
-              longer needed to make axios requests to the database for a guest.
-              For the logged-in user requests to the database, I used the
-              extraReducers feature in Redux Toolkit, which let me specifically
-              target the pending, fulfilled, and rejected states resulting from
-              the promises returned by the axios requests.
-            </p>
-            <p>
-              This was how I ended up setting up my reducers in redux toolkit to
-              handle changes to the guest cart:
-            </p>
-            <img
-              src="/images/screenshots/mern-shop/mern-shop-guest-redux.png"
-              alt=""
-              class="mb-8"
-            />
-            <p>
-              This was how I ended up using the extraReducers in redux toolkit
-              to handle the changes to the user's cart:
-            </p>
-            <img
-              src="/images/screenshots/mern-shop/mern-shop-user-redux.png"
-              alt=""
-              class="mb-8"
-            />
-            <p>
-              This was how I ended up setting up my functions to make requests
-              to the backend api with redux toolkit:
-            </p>
-            <img
-              src="/images/screenshots/mern-shop/mern-shop-cart-service.png"
-              alt=""
-              class="mb-8"
-            />
-            <p>
-              After building the frontend, I determined that I would need four
-              different models in the backend: users, carts, orders, and
-              products. Each of those models would have their respective routes
-              and controllers. However, additionally I needed routes and
-              controller logic to handle the checkout process. I used Stripe to
-              help with the payments because it was a popular choice and seemed
-              straightforward to use.
-            </p>
-            <p>
-              I had helped build a backend in the past using MongoDB, Express,
-              and NodeJS. However, this was my first time building a backend,
-              with multiple models, on my own using these technologies. I
-              started off just setting up the routes and models with basic
-              controller logic just to see if everything was working. I used
-              Postman to test my api endpoints along the way.
-            </p>
-            <p>
-              One of the biggest challenges I ran into when building the backend
-              was setting up the models properly with the right properties. This
-              was especially apparent in the products schema. At first, I
-              thought I could set the color and size properties to an array of
-              strings, similar to the categories property. This worked fine when
-              rendering the different options on the product info page. However,
-              as I was testing the add to cart process, I realized that products
-              with the same title and different colors or sizes were being
-              treated as the same product in the cart. This meant that the user
-              couldn't view or update their choices separately based on the
-              different color or size of the product. Another problem was the
-              image being rendered was always the same, regardless of the color.
-              To remedy this, I decided to change the color and size properties
-              in the schema to be an array of objects instead and give a
-              separate product id to each color and size.
-            </p>
-            <img
-              src="/images/screenshots/mern-shop/product-schema.png"
-              alt=""
-              class="object-contain h-96"
-            />
-            <p>
-              This did end up working out where the different colors and sizes
-              were being rendered separately in the cart, which allowed the user
-              to update the items without affecting others with the same title.
-              However, after completing the project and analyzing the code, I
-              realized that it would have been a lot simpler to save the color
-              and size properties as strings. Then, have a separate product id
-              for each color and size. Finally, when rendering the product info,
-              doing a lookup in the database based on the title of the product
-              rather than the id.
-            </p>
-            <img
-              src="/images/screenshots/mern-shop/product-controller.png"
-              alt=""
-            />
-            <p>
-              Overall, it was fun building this project and I learned a lot! I
-              had been learning a few of the technologies I used in this project
-              separately, but building this project gave me more experience
-              putting them all together. I am still definitely more comfortable
-              with the frontend, but I do feel more familiar with the backend
-              now. As I was building the backend, it also gave me more ideas to
-              add to the frontend, along with improving the existing features.
-            </p>
-            <p>
-              After building this project, the next idea I have is to build an
-              admin dashboard using the MERN Stack to make it easier and more
-              efficient to handle the backend for the shopping app. The admin
-              dashboard could also be used in future projects besides just the
-              shopping app.
-            </p>
+
+            <!-- mern shop case study -->
+            <div class="flex flex-col gap-4 font-arial">
+              <h4 class="font-semibold text-lg mt-8">Case Study:</h4>
+              <p>
+                Before attempting this project, I had already done a few
+                projects with React and a group project with the MERN Stack.
+                However, I hadn't really done a big project by myself with the
+                MERN Stack. I decided on the idea of a shopping website because
+                it was something I had used myself before, and I could reference
+                those websites that I had used when building the project (like
+                Amazon for example). A shopping website also has a variety of
+                different features that could help me practice my skills with
+                React, specifically with managing state changes in multiple
+                places (by using Redux Toolkit). It would also provide me an
+                opportunity to utilize multiple models in MongoDB, but be common
+                enough that there would be documentation or examples out there
+                to guide me if I got stuck on the logic of a controller.
+              </p>
+              <p>
+                In terms of actually building the project, I started off by
+                building a mobile-responsive frontend using React, Redux Toolkit
+                and styled-components. I already had experience with all of
+                these technologies, and I thought the familiarity I had would
+                make it easier as a starting point. It would also give me
+                insight as to what models and controllers that I would need in
+                the backend.
+              </p>
+              <p>
+                One of the big problems I ran into when building the frontend
+                was figuring out how I was going to handle different requests
+                based on whether they were a logged-in user or a guest user. I
+                thought it was important to handle this distinction because most
+                shopping websites don't require you to make an account to make
+                an order. However, this was my first time handling this type of
+                distinction in a project, so it took me a bit of trial and
+                error.
+              </p>
+              <p>
+                At first, I tried using the same functions in Redux Toolkit and
+                just changing the logic based on whether they were a user or a
+                guest. I thought I would have to do this because I needed to
+                save the cart regardless of whether they were signed in or not.
+                However, after trying it out, I realized that it was impractical
+                to save a guest's cart in the database because they wouldn't
+                have a user id. Next, I thought about just having a guest user
+                id in the database, but I realized that this solution could
+                potentially run into problems if I ended up allowing users to
+                save multiple carts (like a wishlist cart for example). Finally,
+                I decided to use localStorage to save the guest's cart. This way
+                the guest's cart could be saved to the browser, and I made it so
+                if they logged in as a user it would clear the localStorage
+                cart. Also, since I ended up using localStorage as opposed to
+                the database, I had to use a different set of reducers in the
+                redux because I no longer needed to make axios requests to the
+                database for a guest. For the logged-in user requests to the
+                database, I used the extraReducers feature in Redux Toolkit,
+                which let me specifically target the pending, fulfilled, and
+                rejected states resulting from the promises returned by the
+                axios requests.
+              </p>
+              <p>
+                This was how I ended up setting up my reducers in redux toolkit
+                to handle changes to the guest cart:
+              </p>
+              <img
+                src="/images/screenshots/mern-shop/mern-shop-guest-redux.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>
+                This was how I ended up using the extraReducers in redux toolkit
+                to handle the changes to the user's cart:
+              </p>
+              <img
+                src="/images/screenshots/mern-shop/mern-shop-user-redux.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>
+                This was how I ended up setting up my functions to make requests
+                to the backend api with redux toolkit:
+              </p>
+              <img
+                src="/images/screenshots/mern-shop/mern-shop-cart-service.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>
+                After building the frontend, I determined that I would need four
+                different models in the backend: users, carts, orders, and
+                products. Each of those models would have their respective
+                routes and controllers. However, additionally I needed routes
+                and controller logic to handle the checkout process. I used
+                Stripe to help with the payments because it was a popular choice
+                and seemed straightforward to use.
+              </p>
+              <p>
+                I had helped build a backend in the past using MongoDB, Express,
+                and NodeJS. However, this was my first time building a backend,
+                with multiple models, on my own using these technologies. I
+                started off just setting up the routes and models with basic
+                controller logic just to see if everything was working. I used
+                Postman to test my api endpoints along the way.
+              </p>
+              <p>
+                One of the biggest challenges I ran into when building the
+                backend was setting up the models properly with the right
+                properties. This was especially apparent in the products schema.
+                At first, I thought I could set the color and size properties to
+                an array of strings, similar to the categories property. This
+                worked fine when rendering the different options on the product
+                info page. However, as I was testing the add to cart process, I
+                realized that products with the same title and different colors
+                or sizes were being treated as the same product in the cart.
+                This meant that the user couldn't view or update their choices
+                separately based on the different color or size of the product.
+                Another problem was the image being rendered was always the
+                same, regardless of the color. To remedy this, I decided to
+                change the color and size properties in the schema to be an
+                array of objects instead and give a separate product id to each
+                color and size.
+              </p>
+              <img
+                src="/images/screenshots/mern-shop/product-schema.png"
+                alt=""
+                class="object-contain h-96"
+              />
+              <p>
+                This did end up working out where the different colors and sizes
+                were being rendered separately in the cart, which allowed the
+                user to update the items without affecting others with the same
+                title. However, after completing the project and analyzing the
+                code, I realized that it would have been a lot simpler to save
+                the color and size properties as strings. Then, have a separate
+                product id for each color and size. Finally, when rendering the
+                product info, doing a lookup in the database based on the title
+                of the product rather than the id.
+              </p>
+              <img
+                src="/images/screenshots/mern-shop/product-controller.png"
+                alt=""
+              />
+              <p>
+                Overall, it was fun building this project and I learned a lot! I
+                had been learning a few of the technologies I used in this
+                project separately, but building this project gave me more
+                experience putting them all together. I am still definitely more
+                comfortable with the frontend, but I do feel more familiar with
+                the backend now. As I was building the backend, it also gave me
+                more ideas to add to the frontend, along with improving the
+                existing features.
+              </p>
+              <p>
+                After building this project, the next idea I have is to build an
+                admin dashboard using the MERN Stack to make it easier and more
+                efficient to handle the backend for the shopping app. The admin
+                dashboard could also be used in future projects besides just the
+                shopping app.
+              </p>
+            </div>
           </section>
 
           <!-- Admin Dashboard Frontend Section -->
@@ -352,9 +376,9 @@
             <div class="flex flex-col gap-1">
               <h4 class="font-semibold text-md">Github Repo Link:</h4>
               <a
-                href="https://github.com/BrandonWu500/admin-dashboard"
+                href="https://github.com/BrandonWu500/admin-dashboard/tree/frontend-only"
                 target="_blank"
-                >https://github.com/BrandonWu500/admin-dashboard</a
+                >https://github.com/BrandonWu500/admin-dashboard/tree/frontend-only</a
               >
             </div>
 
@@ -368,212 +392,481 @@
               allowfullscreen
               class="w-full"
             ></iframe>
-            <h4 class="font-semibold text-md mt-8">Case Study:</h4>
-            <p>
-              This project is a mock frontend for an admin dashboard. It uses
-              React with TypeScript along with Sass.
-            </p>
-            <p>
-              I decided to build this project as a continuation of the
-              e-commerce app that I built previously. The goal was to make it
-              easier for an admin to access user and product data and make
-              changes accordingly. I also wanted to gain more experience with
-              TypeScript and Sass, so I thought this would be a good opportunity
-              for that.
-            </p>
-            <h5>TypeScript:</h5>
-            <p>
-              Before going into the project, I knew that TypeScript was similar
-              to JavaScript, it just meant adding explicit types to variables to
-              make it easier to read and understand the code. However, I didn't
-              anticipate some of the challenges I would face when writing my
-              normal React code.
-            </p>
-            <p>
-              It turns out TypeScript didn't agree with some of the ways I had
-              initially gone about writing the code. I had to re-think and
-              re-write different portions of my code throughout the process to
-              avoid running into TypeScript errors.
-            </p>
-            <p>
-              One example of this was when implementing the dark mode feature
-              and using the react context api along with the useReducer hook. I
-              wanted to pass the dark mode state along with the dispatch
-              function to the sidebar and topbar where users would have the
-              option of choosing a color theme or just directly toggling dark
-              mode on and off as seen in the ui here:
-            </p>
-            <img
-              src="/images/screenshots/admin-front/dark-mode-ui-buttons.png"
-              alt=""
-              class="mb-8"
-            />
-            <p>I was going to accomplish this by writing the code like this:</p>
-            <img
-              src="/images/screenshots/admin-front/dark-mode-context-before.png"
-              alt=""
-              class="mb-8"
-            />
-            <p>
-              However, I ran into some typescript errors so I ended up creating
-              a custom hook and passing that to the context provider value
-              instead.
-            </p>
-            <img
-              src="/images/screenshots/admin-front/dark-mode-context-after-1.png"
-              alt=""
-            />
-            <img
-              src="/images/screenshots/admin-front/dark-mode-context-after-2.png"
-              alt=""
-              class="mb-8"
-            />
 
-            <p>
-              Another problem I ran into was figuring out the right type names
-              for some of the variables I used. I knew I could use the “any”
-              type to skirt around some of the errors, but it wasn't the best
-              practice to do that because then it would defeat the purpose of
-              using TypeScript, so I tried to keep my “any” usage to a minimum
-              and also use the vscode intellisense to help me determine what
-              type to use in what situation.
-            </p>
-            <h5>Sass (SCSS syntax):</h5>
-            <p>
-              This was my first time using Sass in a larger project, but I
-              didn't think it would be too difficult to pick up because I was
-              confident in my CSS skills and using custom properties.
-              Additionally, I had experience with styled-components, which also
-              used nested rulesets.
-            </p>
-            <p>
-              For the most part, I didn't have any problems with Sass during the
-              project. However, one misconception I did have was that the
-              stylesheets would work like styled-components. I thought they
-              would be specific to the page or component I was working on.
-            </p>
-            <p>
-              For instance, with styled-components I could reuse “class” names
-              like “container” and “title” without it affecting other components
-              with the same name on other pages.
-            </p>
-            <img
-              src="/images/screenshots/admin-front/styled-components-comparison.png"
-              alt=""
-              class="mb-8 max-h-64 object-cover object-top"
-            />
-            <p>
-              However, with Sass, I quickly realized that wasn't the case, so I
-              decided to wrap the component or page I was working on in a div
-              with a unique class name corresponding to the file name. This way
-              I could nest all the rulesets within that unique wrapper div and
-              not have to worry about reusing names affecting other components.
-            </p>
-            <img
-              src="/images/screenshots/admin-front/sass-comparison.png"
-              alt=""
-              class="mb-8"
-            />
-            <p>
-              Another unique thing I learned about Sass that I actually quite
-              enjoyed using was mix-ins. Mix-ins are similar to functions in
-              Sass except they don't have a return value and instead allow you
-              to change rulesets accordingly. This was useful when setting an
-              element's background color in relation to its color, as well as
-              implementing a responsive design for multiple different devices
-              (mobile, tablet, laptop).
-            </p>
-            <img src="/images/screenshots/admin-front/mixin-1.png" alt="" />
-            <img
-              src="/images/screenshots/admin-front/mixin-2.png"
-              alt=""
-              class="mb-8 max-h-96 object-contain"
-            />
-            <p>
-              Finally, I also experimented with using loops in Sass, which ended
-              up allowing me to reproduce class names similar to Tailwind CSS,
-              with regard to customizing specific property values like gap.
-            </p>
-            <img
-              src="/images/screenshots/admin-front/sass-loops.png"
-              alt=""
-              class="mb-8"
-            />
-            <h5>Things I'm Proud of:</h5>
-            <p>
-              The last thing I want to share is just a few code snippets from
-              the project that I'm proud of.
-            </p>
-            <p>
-              The first was creating my own data table component similar to the
-              one used by Material UI. I used an html table and then used enum
-              values to sort the different columns when the headers were
-              clicked, along with adding an arrow hover effect so a user could
-              clearly tell what clicking on the headers would do.
-            </p>
-            <img
-              src="/images/screenshots/admin-front/data-table-ui.png"
-              alt=""
-            />
-            <img
-              src="/images/screenshots/admin-front/data-table-code.png"
-              alt=""
-              class="mb-8"
-            />
-            <p>
-              The second was figuring out how to use a single React ref object
-              to store multiple inputs or textareas fields and then use those
-              refs to edit and save user info accordingly.
-            </p>
-            <img
-              src="/images/screenshots/admin-front/user-card-ui.png"
-              alt=""
-              class="mb-8 max-h-96 object-contain"
-            />
-            <img src="/images/screenshots/admin-front/user-card.png" alt="" />
-            <img
-              src="/images/screenshots/admin-front/user-card-row.png"
-              alt=""
-              class="mb-8"
-            />
-            <p>
-              At a first glance it doesn't seem like much code or that
-              difficult, but the reason why I got stuck on this part was because
-              I kept running into TypeScript errors or the refs wouldn't update
-              their respective input field. However, after reading some stack
-              overflow posts and a little trial and error, I managed to get it
-              to work.
-            </p>
-            <p>
-              Using those refs, I also was able to create two different ways to
-              edit user info. One way was directly in the user info card, and
-              one was with a fullscreen popup and overlay.
-            </p>
-            <img src="/images/screenshots/admin-front/alt-edit-ui.png" alt="" />
-            <img
-              src="/images/screenshots/admin-front/alternative-edit.png"
-              alt=""
-              class="mb-8"
-            />
-            <p>
-              Overall, this was a fun project to learn TypeScript and Sass,
-              while also giving me the chance to utilize a wider variety of
-              React hooks. It was also nice to be able to build off one of my
-              previous project ideas. At the same time, the layout I built could
-              still be used for a non-ecommerce admin dashboard.
-            </p>
-            <p>
-              In the next installment of the project, my initial plan was to use
-              the backend from the MERN shopping site and connect it with the
-              frontend of the admin dashboard to allow me to work with dynamic
-              data instead of dummy data. However, I have now decided to use
-              Google Firebase instead because it will give me a chance to be
-              exposed to a new backend technology. Additionally, Firebase seems
-              to have less setup and maintenance involved compared to a MERN
-              stack app at the cost of less freedom and customizability.
-              However, since I want to focus on frontend web development, that's
-              okay for my purposes.
-            </p>
+            <!-- admin dashboard frontend case study -->
+            <div class="flex flex-col gap-4 font-arial">
+              <h4 class="font-semibold text-lg mt-8">Case Study:</h4>
+              <p>
+                This project is a mock frontend for an admin dashboard. It uses
+                React with TypeScript along with Sass.
+              </p>
+              <p>
+                I decided to build this project as a continuation of the
+                e-commerce app that I built previously. The goal was to make it
+                easier for an admin to access user and product data and make
+                changes accordingly. I also wanted to gain more experience with
+                TypeScript and Sass, so I thought this would be a good
+                opportunity for that.
+              </p>
+              <div>
+                <h5 class="font-bold">TypeScript:</h5>
+                <p>
+                  Before going into the project, I knew that TypeScript was
+                  similar to JavaScript, it just meant adding explicit types to
+                  variables to make it easier to read and understand the code.
+                  However, I didn't anticipate some of the challenges I would
+                  face when writing my normal React code.
+                </p>
+              </div>
+              <p>
+                It turns out TypeScript didn't agree with some of the ways I had
+                initially gone about writing the code. I had to re-think and
+                re-write different portions of my code throughout the process to
+                avoid running into TypeScript errors.
+              </p>
+              <p>
+                One example of this was when implementing the dark mode feature
+                and using the react context api along with the useReducer hook.
+                I wanted to pass the dark mode state along with the dispatch
+                function to the sidebar and topbar where users would have the
+                option of choosing a color theme or just directly toggling dark
+                mode on and off as seen in the ui here:
+              </p>
+              <img
+                src="/images/screenshots/admin-front/dark-mode-ui-buttons.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>
+                I was going to accomplish this by writing the code like this:
+              </p>
+              <img
+                src="/images/screenshots/admin-front/dark-mode-context-before.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>
+                However, I ran into some typescript errors so I ended up
+                creating a custom hook and passing that to the context provider
+                value instead.
+              </p>
+              <img
+                src="/images/screenshots/admin-front/dark-mode-context-after-1.png"
+                alt=""
+              />
+              <img
+                src="/images/screenshots/admin-front/dark-mode-context-after-2.png"
+                alt=""
+                class="mb-8"
+              />
+
+              <p>
+                Another problem I ran into was figuring out the right type names
+                for some of the variables I used. I knew I could use the “any”
+                type to skirt around some of the errors, but it wasn't the best
+                practice to do that because then it would defeat the purpose of
+                using TypeScript, so I tried to keep my “any” usage to a minimum
+                and also use the vscode intellisense to help me determine what
+                type to use in what situation.
+              </p>
+              <div>
+                <h5 class="font-bold">Sass (SCSS syntax):</h5>
+                <p>
+                  This was my first time using Sass in a larger project, but I
+                  didn't think it would be too difficult to pick up because I
+                  was confident in my CSS skills and using custom properties.
+                  Additionally, I had experience with styled-components, which
+                  also used nested rulesets.
+                </p>
+              </div>
+              <p>
+                For the most part, I didn't have any problems with Sass during
+                the project. However, one misconception I did have was that the
+                stylesheets would work like styled-components. I thought they
+                would be specific to the page or component I was working on.
+              </p>
+              <p>
+                For instance, with styled-components I could reuse “class” names
+                like “container” and “title” without it affecting other
+                components with the same name on other pages.
+              </p>
+              <img
+                src="/images/screenshots/admin-front/styled-components-comparison.png"
+                alt=""
+                class="mb-8 max-h-64 object-cover object-top"
+              />
+              <p>
+                However, with Sass, I quickly realized that wasn't the case, so
+                I decided to wrap the component or page I was working on in a
+                div with a unique class name corresponding to the file name.
+                This way I could nest all the rulesets within that unique
+                wrapper div and not have to worry about reusing names affecting
+                other components.
+              </p>
+              <img
+                src="/images/screenshots/admin-front/sass-comparison.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>
+                Another unique thing I learned about Sass that I actually quite
+                enjoyed using was mix-ins. Mix-ins are similar to functions in
+                Sass except they don't have a return value and instead allow you
+                to change rulesets accordingly. This was useful when setting an
+                element's background color in relation to its color, as well as
+                implementing a responsive design for multiple different devices
+                (mobile, tablet, laptop).
+              </p>
+              <img src="/images/screenshots/admin-front/mixin-1.png" alt="" />
+              <img
+                src="/images/screenshots/admin-front/mixin-2.png"
+                alt=""
+                class="mb-8 max-h-96 object-contain"
+              />
+              <p>
+                Finally, I also experimented with using loops in Sass, which
+                ended up allowing me to reproduce class names similar to
+                Tailwind CSS, with regard to customizing specific property
+                values like gap.
+              </p>
+              <img
+                src="/images/screenshots/admin-front/sass-loops.png"
+                alt=""
+                class="mb-8"
+              />
+              <div>
+                <h5 class="font-bold">Things I'm Proud of:</h5>
+                <p>
+                  The last thing I want to share is just a few code snippets
+                  from the project that I'm proud of.
+                </p>
+              </div>
+              <p>
+                The first was creating my own data table component similar to
+                the one used by Material UI. I used an html table and then used
+                enum values to sort the different columns when the headers were
+                clicked, along with adding an arrow hover effect so a user could
+                clearly tell what clicking on the headers would do.
+              </p>
+              <img
+                src="/images/screenshots/admin-front/data-table-ui.png"
+                alt=""
+              />
+              <img
+                src="/images/screenshots/admin-front/data-table-code.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>
+                The second was figuring out how to use a single React ref object
+                to store multiple inputs or textareas fields and then use those
+                refs to edit and save user info accordingly.
+              </p>
+              <img
+                src="/images/screenshots/admin-front/user-card-ui.png"
+                alt=""
+                class="mb-8 max-h-96 object-contain"
+              />
+              <img src="/images/screenshots/admin-front/user-card.png" alt="" />
+              <img
+                src="/images/screenshots/admin-front/user-card-row.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>
+                At a first glance it doesn't seem like much code or that
+                difficult, but the reason why I got stuck on this part was
+                because I kept running into TypeScript errors or the refs
+                wouldn't update their respective input field. However, after
+                reading some stack overflow posts and a little trial and error,
+                I managed to get it to work.
+              </p>
+              <p>
+                Using those refs, I also was able to create two different ways
+                to edit user info. One way was directly in the user info card,
+                and one was with a fullscreen popup and overlay.
+              </p>
+              <img
+                src="/images/screenshots/admin-front/alt-edit-ui.png"
+                alt=""
+              />
+              <img
+                src="/images/screenshots/admin-front/alternative-edit.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>
+                Overall, this was a fun project to learn TypeScript and Sass,
+                while also giving me the chance to utilize a wider variety of
+                React hooks. It was also nice to be able to build off one of my
+                previous project ideas. At the same time, the layout I built
+                could still be used for a non-ecommerce admin dashboard.
+              </p>
+              <p>
+                In the next installment of the project, my initial plan was to
+                use the backend from the MERN shopping site and connect it with
+                the frontend of the admin dashboard to allow me to work with
+                dynamic data instead of dummy data. However, I have now decided
+                to use Google Firebase instead because it will give me a chance
+                to be exposed to a new backend technology. Additionally,
+                Firebase seems to have less setup and maintenance involved
+                compared to a MERN stack app at the cost of less freedom and
+                customizability. However, since I want to focus on frontend web
+                development, that's okay for my purposes.
+              </p>
+            </div>
+          </section>
+
+          <!-- admin dashboard firebase section -->
+          <section
+            id="admin-dash-firebase"
+            class="mx-auto flex flex-col gap-4 py-40 leading-8"
+          >
+            <h3 class="font-bold text-lg">Admin Dashboard with Firebase</h3>
+            <div class="flex flex-col gap-1">
+              <h4 class="font-semibold text-md">Github Repo Link:</h4>
+              <a
+                href="https://github.com/BrandonWu500/admin-dashboard"
+                target="_blank"
+                >https://github.com/BrandonWu500/admin-dashboard</a
+              >
+            </div>
+
+            <p>Below is a video walkthrough of the app's functionality:</p>
+            <iframe
+              height="315"
+              src="https://www.youtube.com/embed/-oSz-sxYN6A"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              class="w-full"
+            ></iframe>
+
+            <!-- admin dashboard firebase case study -->
+            <div class="font-arial flex flex-col gap-4">
+              <h4 class="font-semibold mt-8 text-lg">Case Study:</h4>
+              <p>
+                This project is a continuation of the admin dashboard frontend.
+                It uses Google Firebase as a backend to provide dynamic data for
+                users, products, and orders. It also adds a third color theme
+                option (blue).
+              </p>
+              <div>
+                <h5 class="font-bold">Firebase:</h5>
+                <p>
+                  This was my first time using Firebase. However, I did have
+                  previous experience with MongoDB, which is also a NoSQL
+                  database, so that definitely helped me pick it up faster. I
+                  knew how to structure my code to make the CRUD operations, I
+                  just had to learn the exact syntax used by Firebase.
+                </p>
+              </div>
+              <div>
+                <h5 class="font-bold">What I liked:</h5>
+                <p>
+                  One cool thing about Firebase is that I could directly use it
+                  in my React code. I didn’t have to set up a backend with
+                  NodeJS and Express. All that was needed was the firebase
+                  config file.
+                </p>
+              </div>
+              <p>
+                Another cool feature I liked about Firebase was being able to
+                work with realtime data easily.
+              </p>
+              <img
+                src="/images/screenshots/admin-firebase/realtime-data.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>
+                Using the code shown above, I was able to set up a listener that
+                constantly checked for updates to the data collection. So, if I
+                was on the data table page, and I made a change to the data on
+                the firebase site, it would immediately update the data table
+                without me having to manually reload the page.
+              </p>
+              <video
+                src="/images/screenshots/admin-firebase/realtime-data-480.mp4"
+                loop
+                muted
+                autoplay
+                class="mb-8"
+              ></video>
+              <div>
+                <h5 class="font-bold">Firebase Challenges:</h5>
+                <p>
+                  One of the main challenges I ran into when using Firebase was
+                  when I was trying to implement the file upload feature on the
+                  edit user info page. Using the boilerplate code they had in
+                  the documentation, I was able to get the image preview option
+                  to work. Thus, I had no problems with the add user/item
+                  option, or so I thought. However, when it came time to test
+                  the edit user option, after hitting the save button, I
+                  realized that sometimes the image updated correctly, and
+                  sometimes it reverted back to the old image. I monitored the
+                  upload progress and it showed 100% every time, but still, it
+                  didn’t save properly every time. I was so confused!
+                </p>
+              </div>
+              <p>
+                However, after a few console.logs in the handleSave function, I
+                realized that the img url wasn’t being updated sometimes after
+                the uploadFile function was called. After examining the
+                boilerplate code more carefully, I realized the mistake I had
+                made. All the way at the bottom, where I was updating the info
+                to hold the new image url, I noticed the getDownloadURL function
+                returned a promise. When the image url wasn’t updating properly,
+                that promise must not have been resolved yet. I tested my theory
+                by hitting the save button as soon as possible vs. waiting 5
+                seconds. Sure enough, when I waited 5 seconds every time the
+                image updated properly. My mistake had been only taking into
+                consideration the image upload progress, and forgetting about
+                the time it took to get the download url after. I fixed the
+                problem by adding a separate useState hook that tracked the
+                getDownloadUrl progress and returned true only after the image
+                url had been updated properly.
+              </p>
+              <img
+                src="/images/screenshots/admin-firebase/firebase-challenge-1.png"
+                alt=""
+              />
+              <img
+                src="/images/screenshots/admin-firebase/firebase-challenge-2.png"
+                alt=""
+                class="mb-8"
+              />
+              <div>
+                <h5 class="font-bold">Dynamic Data Changes:</h5>
+                <p>
+                  Now, I want to talk about two of the big changes I made by
+                  working with dynamic data instead of the static mock data.
+                </p>
+              </div>
+              <p>
+                Since I was making async requests to firebase now, I had to add
+                loading text to the different components that fetched data.
+                Without it, a user with slow internet connection could open up a
+                page and see no items found when in reality the data was still
+                being fetched.
+              </p>
+              <p>
+                For most of the components, this wasn’t a problem. However, in
+                the data table component I ran into an issue when there was
+                actually no data in the collection. Originally, I had it that
+                when data was fetched it would set isLoading to false, but since
+                I was using a real time listener, it would just keep fetching
+                and never show “no items found”. The way I got around this was
+                by adding a check to see if the data array being returned had a
+                length of 0, and changing the title and isLoading variable
+                accordingly.
+              </p>
+              <p>
+                Unfortunately, the problem with that approach was that it would
+                now set isLoading to false before the data had even begun to
+                fetch because the initial array in the useState had a length of
+                0.
+              </p>
+              <p>
+                Finally, I decided to use a setTimeout function and after a
+                certain period of time, only then would it set isLoading to
+                false. The setTimeout was only called in the event that the data
+                array had a length of 0. This meant that if there was data in
+                the collection, the loading text would properly show up before
+                the data was loaded. However, if there was no data, the loading
+                text would stay on the screen for the duration of the timeout
+                before showing “no items found”.
+              </p>
+              <img
+                src="/images/screenshots/admin-firebase/set-timeout.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>With Data in Collection:</p>
+              <video
+                src="/images/screenshots/admin-firebase/realtime-data-load-480.mp4"
+                loop
+                muted
+                autoplay
+                class="mb-8"
+              ></video>
+              <p>No Data in Collection:</p>
+              <video
+                src="/images/screenshots/admin-firebase/realtime-no-data-load-480.mp4"
+                loop
+                muted
+                autoplay
+                class="mb-8"
+              ></video>
+              <p>
+                The second big change I had to account for was the changing
+                order of headers in the data table as well as the input fields
+                in the edit info component. What I mean by this is that because
+                I was now fetching document fields in each collection and using
+                Object.keys() to map them out, the order would change every time
+                I reloaded the page. I wasn’t quite sure how to sort them in the
+                same order every time, but after searching on stack overflow, I
+                found a simple solution that works well.
+              </p>
+              <img
+                src="/images/screenshots/admin-firebase/fixed-order-datatable-headers.png"
+                alt=""
+                class="mb-8"
+              />
+              <p>
+                Also as shown above, specifically for the data table page, I
+                wanted to store the name and image of the item under one column,
+                so I first filtered out the name and image fields from the
+                object and then used the spread operator in combination with the
+                slice() method to add that column name in a fixed position every
+                time.
+              </p>
+              <div>
+                <h5 class="font-bold">Third color theme:</h5>
+                <p>
+                  The last thing I want to touch on is the third color theme
+                  option that I promised I would implement with this iteration
+                  of the project. Last time, with the useContext and useReducer
+                  hooks I was able to create a light and dark mode. I had done
+                  this by toggling a boolean state variable.
+                </p>
+              </div>
+              <p>
+                However, in order to add the third color theme (blue), I ended
+                up changing that state variable to a string and using that to
+                add a class name to the global app. Most of the work for this
+                part of the project actually was refactoring the scss so that I
+                could have separate scss files for each theme, as opposed to
+                default styles for the components and a dark mode scss file.
+              </p>
+              <div>
+                <h5 class="font-bold">Conclusion:</h5>
+                <p>
+                  Overall, this was a fun way to learn Firebase and also convert
+                  a static frontend to a more dynamic website. That being said,
+                  there are still some static components that I kept because I
+                  primarily wanted to focus on data for users, products, and
+                  orders. I’m pretty happy that I was able to successfully
+                  implement all the CRUD operations for these collections, and
+                  also build data tables that filtered based on the shared data
+                  between the collections (as seen on the edit info page).
+                </p>
+              </div>
+              <div>
+                <h5 class="font-bold">What’s Next?:</h5>
+                <p>
+                  Now that I have more experience with React, as well as some
+                  experience with TypeScript and Sass, my next goal is to learn
+                  Next.js. The cool thing about learning Next is that it will
+                  basically utilize everything I have learned up until now and
+                  build on top of it. The thing I am most excited about is the
+                  ability to server-side render and generate static websites
+                  with basically just React code. So you kind of get the best of
+                  both worlds!
+                </p>
+              </div>
+            </div>
           </section>
         </div>
       </section>

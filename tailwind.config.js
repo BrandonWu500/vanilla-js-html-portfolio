@@ -12,6 +12,7 @@ module.exports = {
     },
     fontFamily: {
       nunito: ['Nunito', 'sans-serif'],
+      arial: ['Arial', 'sans-serif'],
     },
   },
   plugins: [],
